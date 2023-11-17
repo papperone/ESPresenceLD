@@ -219,6 +219,8 @@ button:
     entity_category: diagnostic
     icon: mdi:power-cycle
     name: "ESP reboot"
+  - platform: factory_reset
+    name: Restart with Factory Default Settings
 
 number:
   - platform: ld2410
