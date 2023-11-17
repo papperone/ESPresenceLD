@@ -2,7 +2,7 @@ substitutions:
   name: "presencemod-ld2410"
   friendly_name: "Sensore movimento"
   ssid: "dummy"
-  password: "dummy"
+  password: "dummydummy"
 
 esphome:
   name: "$name"
