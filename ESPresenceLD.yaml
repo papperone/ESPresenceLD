@@ -10,7 +10,7 @@ esphome:
   build_path: ./build/${name}
   project:
     name: "papperone.presence-ld2410"
-    version: "1.0.0"
+    version: "0.1.0"
 
 esp32:
   board: esp32dev
@@ -44,10 +44,10 @@ wifi:
  # ssid: $ssid
  # password: $password
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
+ # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
  # non occorre, di default prenderà il devicename   ssid: "LD2410_TestBoard"
-    #password: "F5dGZNjay8li"
+ #  password: "1234578"
 
 captive_portal:
 
