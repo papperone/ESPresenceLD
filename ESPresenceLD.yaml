@@ -17,7 +17,7 @@ esp32:
 esp32_improv:
   authorizer: none
 dashboard_import:
-  package_import_url: github://papperone/ESPresenceLD/edit/main/ESPresenceLD.yaml
+  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
   import_full_config: false # or true
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
