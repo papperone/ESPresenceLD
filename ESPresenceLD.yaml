@@ -19,13 +19,16 @@ esp32:
 
 esp32_improv:
   authorizer: none
+
 dashboard_import:
-    remote_package:
-      url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
-      ref: main # optional
-      file: [ESPresenceLD.yaml]
-      refresh: 10m # optional
-      import_full_config: false # or true
+  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
+  import_full_config: false # or true
+
+#remote_package:
+#      url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
+#      ref: main # optional
+#      file: [ESPresenceLD.yaml]
+#      refresh: 10m # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
 text:
