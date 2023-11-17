@@ -1,10 +1,34 @@
+substitutions:
+  name: "presencemod-ld2410"
+  friendly_name: "Sensore movimento"
+
 esphome:
-  name: "presence-ld2410"
+  name: "$name"
+  name_add_mac_suffix: true
+  project:
+    name: "papperone.presence-ld2410"
+    version: "1.0.0"
 
 esp32:
   board: esp32dev
   framework:
     type: arduino
+
+esp32_improv:
+  authorizer: none
+dashboard_import:
+  package_import_url: github://papperone/ESPresenceLD/edit/main/ESPresenceLD.yaml
+  import_full_config: false # or true
+
+# Prova per un custom id necessario all'interfaccia di Maurizio
+text:
+  - platform: template
+    id: sensorname_id
+    name: "Custom name"
+    optimistic: true
+    min_length: 0
+    max_length: 20
+    mode: text
 
 wifi:
   ssid: !secret wifi_ssid
@@ -12,7 +36,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "LD2410_TestBoard"
+ # non occorre, di default prenderà il devicename   ssid: "LD2410_TestBoard"
     #password: "F5dGZNjay8li"
 
 captive_portal:
@@ -166,18 +190,23 @@ switch:
 
 light:
   - platform: status_led
+    entity_category: config
     name: "Status LED ESP32"
     pin: GPIO13
 
 button:
   - platform: ld2410
     factory_reset:
+      entity_category: diagnostic
       name: "Factory reset"
     restart:
+      entity_category: diagnostic
       name: "Restart"
     query_params:
+      entity_category: diagnostic
       name: "Query params"
   - platform: restart
+    entity_category: diagnostic
     icon: mdi:power-cycle
     name: "ESP reboot"
 
@@ -241,16 +270,22 @@ text_sensor:
   - platform: ld2410
     version:
       name: "Firmware version"
+      entity_category: diagnostic
     mac_address:
       name: "Mac address"
+      entity_category: diagnostic
 
 select:
   - platform: ld2410
     distance_resolution:
+      entity_category: config
       name: "Distance resolution"
     baud_rate:
+      entity_category: config
       name: "Baud rate"
     light_function:
+      entity_category: config
       name: "Light function"
     out_pin_level:
+      entity_category: config
       name: "Out pin level"
