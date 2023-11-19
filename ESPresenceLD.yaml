@@ -1,8 +1,8 @@
 substitutions:
   name: "presencemod-ld2410"
   friendly_name: "Sensore movimento"
-  ssid: "dummy"
-  password: "dummydummy"
+ # ssid: "dummy"
+#  password: "dummydummy"
 
 esphome:
   name: "$name"
@@ -17,12 +17,12 @@ esp32:
   framework:
     type: arduino
 
-esp32_improv:
-  authorizer: none
+#esp32_improv:
+#  authorizer: none
 
-dashboard_import:
-  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
-  import_full_config: false # or true
+#dashboard_import:
+#  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
+#  import_full_config: false # or true
 
 #remote_package:
 #      url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
@@ -41,8 +41,8 @@ text:
     mode: text
 
 wifi:
-  ssid: $ssid
-  password: $password
+#  ssid: $ssid
+#  password: $password
 
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
