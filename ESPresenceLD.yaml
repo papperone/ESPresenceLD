@@ -1,8 +1,8 @@
 substitutions:
   name: "presencemod-ld2410"
   friendly_name: "Sensore movimento"
- # ssid: "dummy"
-#  password: "dummydummy"
+  ssid: "dummy"
+  password: "dummydummy"
 
 esphome:
   name: "$name"
@@ -41,13 +41,13 @@ text:
     mode: text
 
 wifi:
-#  ssid: $ssid
-#  password: $password
+  ssid: $ssid
+  password: $password
 
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
  # non occorre, di default prenderà il devicename   ssid: "LD2410_TestBoard"
- #  password: "1234578"
+  # password: "1234578"
 
 captive_portal:
 
