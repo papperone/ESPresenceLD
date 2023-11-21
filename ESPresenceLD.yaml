@@ -26,9 +26,9 @@ sp32_improv:
 
 remote_package:
       url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
-#      ref: main # optional
-#      file: [ESPresenceLD.yaml]
-#      refresh: 10m # optional
+      ref: main # optional
+      file: [ESPresenceLD.yaml]
+      refresh: 10m # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
 text:
