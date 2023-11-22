@@ -17,7 +17,7 @@ esp32:
   framework:
     type: arduino
 
-sp32_improv:
+esp32_improv:
   authorizer: none
 
 #dashboard_import:
