@@ -17,12 +17,8 @@ esp32:
   framework:
     type: arduino
 
-esp32_improv:
-  authorizer: none
-
-#dashboard_import:
-#  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
-#  import_full_config: false # or true
+#esp32_improv:
+#  authorizer: none
 
 remote_package:
       url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
@@ -48,20 +44,20 @@ wifi:
   ap:
  # non occorre, di default prenderà il devicename   ssid: "LD2410_TestBoard"
   # password: "1234578"
-
-captive_portal:
-
-# Enable logging
-logger:
-  hardware_uart: uart0
   
 # Enable Home Assistant API
 api:
 
+ota:
+
+captive_portal:
+
 web_server:
   port: 80
 
-ota:
+# Enable logging
+logger:
+  hardware_uart: uart0
 
 uart:
   #id: uart1
@@ -301,3 +297,13 @@ select:
     out_pin_level:
       entity_category: config
       name: "Out pin level"
+
+# Prova per un custom id necessario all'interfaccia di Maurizio
+text:
+  - platform: template
+    id: sensorname_id
+    name: "Sensori-2410-cast"
+    optimistic: true
+    min_length: 0
+    max_length: 20
+    mode: text
