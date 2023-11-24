@@ -21,7 +21,7 @@ esp32:
 #  authorizer: none
 
 remote_package:
-      https://github.com/papperone/ESPresenceLD/ESPresenceLD.yaml
+      https://github.com/papperone/ESPresenceLD
       ref: main # optional
       file: [ESPresenceLD.yaml]
       refresh: 10m # optional
