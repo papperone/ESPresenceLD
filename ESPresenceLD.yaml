@@ -1,8 +1,8 @@
 substitutions:
   name: "presencemod-ld2410"
   friendly_name: "Sensore movimento"
-  ssid: "dummy"
-  password: "dummydummy"
+  ssid: "!secret wifi_ssid"
+  password: "!secret wifi_password"
 
 esphome:
   name: "$name"
