@@ -52,6 +52,9 @@ wifi:
 api:
 
 ota:
+#  on_error:
+#    then:
+#      - button.press: restart_button
 
 captive_portal:
 
