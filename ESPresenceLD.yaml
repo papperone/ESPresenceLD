@@ -23,6 +23,9 @@ esp32:
     type: arduino
 
 ######## inserire sul fw base
+#esphome:
+#  name: "$name"
+#  name_add_mac_suffix: true
 #dashboard_import:
 #  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
 #esp32_improv:
