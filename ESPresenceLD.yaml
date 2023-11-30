@@ -22,11 +22,15 @@ esp32:
   framework:
     type: arduino
 
-esp32_improv:
-  authorizer: none
+######## inserire sul fw base
+#dashboard_import:
+#  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
+#esp32_improv:
+#  authorizer: none
 #  status_indicator: onboard_led #vuole un output
 
-improv_serial:
+#improv_serial:
+###############################
 
 #remote_package:
 #      https://github.com/papperone/ESPresenceLD
@@ -46,8 +50,8 @@ text:
 
 
 wifi:
-  ssid: !secret wifi_ssid #$ssid
-  password: !secret wifi_password #$password
+  ssid: dummy #!secret wifi_ssid #$ssid
+  password: dummy #!secret wifi_password #$password
 
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
