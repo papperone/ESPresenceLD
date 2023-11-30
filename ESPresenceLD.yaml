@@ -12,7 +12,7 @@ esphome:
   build_path: ./build/${name}
   project:
     name: "papperone.presence-ld2410"
-    version: "0.1.0"
+    version: "0.1.1"
 
 esp32:
   board: esp32dev
@@ -45,7 +45,7 @@ wifi:
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ap_timeout: $wifi_ap_timeout
- # non occorre, di default prenderà il devicename   ssid: "LD2410_TestBoard"
+ # ssid: # non occorre, di default prenderà il devicename
   # password: "1234578"
   
 # Enable Home Assistant API
@@ -58,7 +58,7 @@ ota:
 
 captive_portal:
 
-#web_server:
+#web_server: #disabilitato per vedere se influenza la stabilità di bt_improv
 #  port: 80
 
 # Enable logging
@@ -285,9 +285,11 @@ text_sensor:
     version:
       name: "Firmware version"
       entity_category: diagnostic
+      disabled_by_default: $disable_entities
     mac_address:
       name: "Mac address"
       entity_category: diagnostic
+      disabled_by_default: $disable_entities
 
 select:
   - platform: ld2410
