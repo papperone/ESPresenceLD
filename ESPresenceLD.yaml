@@ -1,46 +1,53 @@
 substitutions:
-  name: "presencemod-ld2410"
+  name: "presencemod2-ld2410"
   friendly_name: "Sensore movimento"
-  ssid: "!secret wifi_ssid"
-  password: "!secret wifi_password"
   disable_entities:  "true" # Disabilitare in blocco entità superflue
   wifi_ap_timeout: 2min    # default to 2 minute timeout for yaml file as package.
 
 esphome:
   name: "$name"
-  name_add_mac_suffix: true
+#  name_add_mac_suffix: true
   build_path: ./build/${name}
   project:
     name: "papperone.presence-ld2410"
     version: "0.1.1"
+  on_boot: # Ai fini di debug, senza connessione ad HA è inutile che inizia a rilevare continuamente distanze nel log
+    - wait_until:  
+          condition:  
+            api.connected: #se si utilizza mqtt questo va sostituito con wifi connected
+        #  timeout: 8s
 
 esp32:
   board: esp32dev
   framework:
     type: arduino
 
-#esp32_improv:
-#  authorizer: none
+esp32_improv:
+  authorizer: none
+#  status_indicator: onboard_led #vuole un output
 
-remote_package:
-      https://github.com/papperone/ESPresenceLD
-      ref: main # optional
-      file: ESPresenceLD.yaml
-      refresh: 10m # optional
+improv_serial:
+
+#remote_package:
+#      https://github.com/papperone/ESPresenceLD
+#      ref: main # optional
+#      file: ESPresenceLD.yaml
+#      refresh: 10m # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
 text:
   - platform: template
     id: sensorname_id
-    name: "Custom name"
+    name: "Sensori-2410-cast"
     optimistic: true
     min_length: 0
     max_length: 20
     mode: text
 
+
 wifi:
-  ssid: $ssid
-  password: $password
+  ssid: !secret wifi_ssid #$ssid
+  password: !secret wifi_password #$password
 
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -65,11 +72,7 @@ captive_portal:
 logger:
   hardware_uart: uart0
 
-on_boot:
-  - wait_until:  
-          condition:      # Ai fini di debug, senza connessione ad HA è inutile che inizia a rilevare continuamente distanze nel log
-            api.connected: #se si utilizza mqtt questo va sostituito con wifi connected
-        #  timeout: 8s
+
 uart:
   #id: uart1
   tx_pin: GPIO33
@@ -82,26 +85,6 @@ ld2410:
   #timeout: 10s
   throttle: 1000ms
   id: ld2410_device
-  #max_move_distance : 2.25m
-  #max_still_distance: 1.5m
-  #g0_move_threshold: 50
-  #g0_still_threshold: 0
-  #g1_move_threshold: 50
-  #g1_still_threshold: 0
-  #g2_move_threshold: 40
-  #g2_still_threshold: 40
-  #g3_move_threshold: 40
-  #g3_still_threshold: 40
-  #g4_move_threshold: 40
-  #g4_still_threshold: 40
-  #g5_move_threshold: 40
-  #g5_still_threshold: 40
-  #g6_move_threshold: 30
-  #g6_still_threshold: 15
-  #g7_move_threshold: 30
-  #g7_still_threshold: 15
-  #g8_move_threshold: 30
-  #g8_still_threshold: 15
 
 sensor:
   # LDR Analog input -------------------------------------
@@ -204,10 +187,10 @@ switch:
     pin: GPIO23
     name: "Disattiva LED presence"
     id: presence_led
+    entity_category: config
 
 light:
   - platform: status_led
-    entity_category: config
     name: "Status LED ESP32"
     pin: GPIO13
 
@@ -215,10 +198,10 @@ button:
   - platform: ld2410
     factory_reset:
       entity_category: diagnostic
-      name: "Factory reset"
+      name: "LD 2410 Factory reset"
     restart:
       entity_category: diagnostic
-      name: "Restart"
+      name: "LD 2410 Restart"
     query_params:
       entity_category: diagnostic
       name: "Query params"
@@ -227,18 +210,22 @@ button:
     icon: mdi:power-cycle
     name: "ESP reboot"
   - platform: factory_reset
-    name: Restart with Factory Default Settings
+    name: "Restart ESP with Factory Default Settings"
 
 number:
   - platform: ld2410
     timeout:
       name: "Timeout"
+      entity_category: config
     light_threshold:
       name: "Light threshold"
+      entity_category: config
     max_move_distance_gate:
       name: "Max move distance gate"
+      entity_category: config
     max_still_distance_gate:
       name: "Max still distance gate"
+      entity_category: config
     g0:
       move_threshold:
         name: "G0 move threshold"
@@ -310,13 +297,3 @@ select:
     out_pin_level:
       entity_category: config
       name: "Out pin level"
-
-# Prova per un custom id necessario all'interfaccia di Maurizio
-text:
-  - platform: template
-    id: sensorname_id
-    name: "Sensori-2410-cast"
-    optimistic: true
-    min_length: 0
-    max_length: 20
-    mode: text
