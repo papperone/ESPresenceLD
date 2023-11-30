@@ -39,7 +39,7 @@ packages:
     url: https://github.com/papperone/ESPresenceLD
     ref: main # optional
     file: ESPresenceLD.yaml
-    refresh: 1min # optional
+    refresh: 60s # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
 text:
