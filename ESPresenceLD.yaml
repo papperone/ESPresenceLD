@@ -3,6 +3,7 @@ substitutions:
   friendly_name: "Sensore movimento"
   ssid: "!secret wifi_ssid"
   password: "!secret wifi_password"
+  disable_entities:  "true" # Disabilitare in blocco entità superflue
   # wifi_ap_timeout: 2min    # default to 2 minute timeout for yaml file as package.
 
 esphome:
