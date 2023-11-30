@@ -65,6 +65,11 @@ captive_portal:
 logger:
   hardware_uart: uart0
 
+on_boot:
+  - wait_until:  
+          condition:      # Ai fini di debug, senza connessione ad HA è inutile che inizia a rilevare continuamente distanze nel log
+            api.connected: #se si utilizza mqtt questo va sostituito con wifi connected
+        #  timeout: 8s
 uart:
   #id: uart1
   tx_pin: GPIO33
