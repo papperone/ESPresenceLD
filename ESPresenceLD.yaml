@@ -34,12 +34,12 @@ esp32:
 
 #improv_serial:
 ###############################
-
-remote_package:
-  url: https://github.com/papperone/ESPresenceLD
-#      ref: main # optional
-  file: ESPresenceLD.yaml
-  refresh: 10m # optional
+packages:
+  remote_package:
+    url: https://github.com/papperone/ESPresenceLD
+    ref: main # optional
+    file: ESPresenceLD.yaml
+    refresh: 10m # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
 text:
