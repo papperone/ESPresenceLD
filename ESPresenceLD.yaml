@@ -64,7 +64,14 @@ wifi:
   
 # Enable Home Assistant API
 api:
-
+  services:
+    - service: set_ld2410_bluetooth_password
+      variables:
+        password: string
+      then:
+        - bluetooth_password.set:
+            id: ld2410_device
+            password: !lambda 'return password;'
 ota:
 #  on_error:
 #    then:
@@ -108,7 +115,18 @@ sensor:
           auto r = map((x * 100), 20, 310, 0, 100);
           if (r > 0) return r;
           return 0;
-
+ - platform: template
+   name: "Last Detection Distance"
+   id: last_detection_distance
+   unit_of_measurement: cm
+   accuracy_decimals: 0
+   update_interval: 1s
+   lambda: |-
+     if ((id(binary_has_target).state) && (id(presence_det_dist).state > 0)) {
+       return id(presence_det_dist).state;
+     } else {
+       return {};
+     }
   # LD2410 Sensors ----------------------------------------
   - platform: ld2410
     light:
@@ -123,6 +141,7 @@ sensor:
       name: "Still Energy"
     detection_distance:
       name: "Detection Distance"
+      id: presence_det_dist
     g0:
       move_energy:
         name: "G0 move energy"
@@ -173,16 +192,45 @@ binary_sensor:
   - platform: ld2410
     has_target:
       name: "Presence"
+      id: binary_has_target
     has_moving_target:
       name: "Moving presence"
     has_still_target:
       name: "Still presence"
     out_pin_presence_status:
       name: "Out pin presence status"
-#  - platform: gpio
-#    pin: GPIO21
-#    name: "PIR Sensor"
-#    device_class: motion
+  ## Set Up Zones Based On Distance reported by the sensor
+  - platform: template
+    name: "Zone 1 Occupancy"
+    device_class: occupancy
+    icon: mdi:motion-sensor
+    lambda: |-
+      if ((id(binary_has_target).state) && ((id(last_detection_distance).state < id(presence_z1_end).state))) {
+        return true;
+      } else {
+        return false;
+      }
+  - platform: template
+    name: "Zone 2 Occupancy"
+    device_class: occupancy
+    icon: mdi:motion-sensor
+    lambda: |-
+      if ((id(binary_has_target).state) && ((id(presence_z1_end).state < id(last_detection_distance).state) && (id(last_detection_distance).state < id(presence_z2_end).state))) {
+        return true;
+      } else {
+        return false;
+      }
+  - platform: template
+    name: "Zone 3 Occupancy"
+    device_class: occupancy
+    icon: mdi:motion-sensor
+    lambda: |-
+      if ((id(binary_has_target).state) && ((id(presence_z2_end).state < id(last_detection_distance).state) && (id(last_detection_distance).state < id(presence_z3_end).state))) {
+        return true;
+      } else {
+        return false;
+      }
+
 
 switch:
   - platform: ld2410
@@ -192,7 +240,7 @@ switch:
       name: "Control bluetooth"
   - platform: gpio
     pin: GPIO23
-    name: "Disattiva LED presence"
+    name: "Deactivate presence LED"
     id: presence_led
     entity_category: config
 
@@ -278,6 +326,49 @@ number:
         name: "G8 move threshold"
       still_threshold:
         name: "G8 still threshold"
+# setup for 3 zones --> occupancy ending values (distance)
+  - platform: template
+    name: "Zone 1 End Distance"
+    id: presence_z1_end
+    device_class: distance
+    min_value: 0
+    max_value: 600
+    step: 1
+    mode: box
+    update_interval: never
+    optimistic: true
+    restore_value: true
+    initial_value: 10
+    icon: "mdi:arrow-collapse-right"
+    entity_category: CONFIG
+  - platform: template
+    name: "Zone 2 End Distance"
+    id: presence_z2_end
+    device_class: distance
+    min_value: 0
+    max_value: 600
+    step: 1
+    mode: box
+    update_interval: never
+    optimistic: true
+    restore_value: true
+    initial_value: 36
+    icon: "mdi:arrow-collapse-right"
+    entity_category: CONFIG
+  - platform: template
+    name: "Zone 3 End Distance"
+    id: presence_z3_end
+    device_class: distance
+    min_value: 0
+    max_value: 600
+    step: 1
+    mode: box
+    update_interval: never
+    optimistic: true
+    restore_value: true
+    initial_value: 100
+    icon: "mdi:arrow-collapse-right"
+    entity_category: CONFIG
 
 text_sensor:
   - platform: ld2410
