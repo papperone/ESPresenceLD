@@ -11,7 +11,7 @@ esphome:
   project:
     name: "papperone.presence-ld2410"
     version: "0.1.1"
-  on_boot: # Ai fini di debug, senza connessione ad HA è inutile che inizia a rilevare continuamente distanze nel log
+  on_boot: # Ai fini di debug, senza connessione ad HA è inutile far rilevare continuamente distanze, appesantiscono il log
     - wait_until:  
           condition:  
             api.connected: #se si utilizza mqtt questo va sostituito con wifi connected
@@ -31,9 +31,9 @@ esp32:
 #esp32_improv:
 #  authorizer: none
 #  status_indicator: onboard_led #vuole un output
-
 #improv_serial:
 ###############################
+
 # questo ce lo teniamo per le prove, poi possiamo cancellarlo se tutto va bene
 #packages:
 #  remote_package:
@@ -43,14 +43,14 @@ esp32:
 #    refresh: 60s # optional
 
 # Prova per un custom id necessario all'interfaccia di Maurizio
-text:
-  - platform: template
-    id: sensorname_id
-    name: "Sensori-2410-cast"
-    optimistic: true
-    min_length: 0
-    max_length: 20
-    mode: text
+#text:
+#  - platform: template
+#    id: sensorname_id
+#    name: "Sensori-2410-cast"
+#    optimistic: true
+#    min_length: 0
+#    max_length: 20
+#    mode: text
 
 
 wifi:
@@ -60,8 +60,8 @@ wifi:
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ap_timeout: $wifi_ap_timeout
- # ssid: # non occorre, di default prenderà il devicename
-  # password: "1234578"
+  # ssid: # non occorre, di default prenderà il devicename
+    password: "1234578"
   
 # Enable Home Assistant API
 api:
@@ -80,13 +80,12 @@ ota:
 
 captive_portal:
 
-#web_server: #disabilitato per vedere se influenza la stabilità di bt_improv
+#web_server: # Disabilitato per vedere se influenza la stabilità di bt_improv entrambi sfruttano molte risorse
 #  port: 80
 
 # Enable logging
 logger:
   hardware_uart: uart0
-
 
 uart:
   #id: uart1
