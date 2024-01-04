@@ -84,7 +84,6 @@ sensor:
           auto r = map((x * 100), 20, 310, 0, 100);
           if (r > 0) return r;
           return 0;
-  # Keep in this sensor the last detection distance ------- 
   - platform: template
     name: "Last Detection Distance"
     id: last_detection_distance
