@@ -8,7 +8,7 @@ esphome:
   name: "$name"
   build_path: ./build/${name}
   project:
-    name: "ESPresence-LD2410"
+    name: "espresence.ld2410"
     version: "1.0.0"
   on_boot: # Ai fini di debug, senza connessione ad HA è inutile far rilevare continuamente distanze, appesantiscono il log
     - wait_until:  
