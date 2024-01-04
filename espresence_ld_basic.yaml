@@ -1,0 +1,29 @@
+substitutions:
+  name: "presencemod2-ld2410"
+  friendly_name: "Sensore movimento"
+  disable_entities:  "true" # Disabilitare in blocco entità superflue
+  wifi_ap_timeout: 2min    # default to 2 minute timeout for yaml file as package.
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+esphome:
+  name: "$name"
+  name_add_mac_suffix: true
+dashboard_import:
+  package_import_url: github://papperone/ESPresenceLD/ESPresenceLD.yaml
+esp32_improv:
+  authorizer: none
+  status_indicator: onboard_led #vuole un output
+
+#improv_serial:
+###############################
+# questo ce lo teniamo per le prove, poi possiamo cancellarlo se tutto va bene
+#packages:
+#  remote_package:
+#    url: https://github.com/papperone/ESPresenceLD
+#    ref: main # optional
+#    file: ESPresenceLD.yaml
+#    refresh: 60s # optional
