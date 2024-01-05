@@ -5,7 +5,7 @@ ESPHome firmware for ESPresenceLD sensor (ESP32+LD2410x)
 TBD
 
 # Hardware
-This firmware is suitable for my ESPresence device based on ESP32-WROOM microcontroller and LD2410C presence sensor.
+This firmware is suitable for my ESPresence device based on ESP32-WROOM-32D microcontroller and LD2410C presence sensor.
 You can purchase this device using the link in the next section. 
 | GPIO  | Assigned Function |
 | ------------- | ------------- |
