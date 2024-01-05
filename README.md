@@ -9,8 +9,13 @@ This firmware is suitable for my ESPresence device based on ESP32-WROOM microcon
 You can purchase this device using the link in the next section. 
 | GPIO  | Assigned Function |
 | ------------- | ------------- |
-| IO1  | xxx  |
-| IO2  | xxx  |
+| IO18  | LD2410C TX Pin  |
+| IO33  | LD2410C RX Pin  |
+| IO13  | Status LED (Green) used by ESPHome  |
+| IO23  | Disable Occupancy LED (Red)  |
+| IO34  | LDR for analog luminosity reading  |
+| IO25  | ICS Bus - SCL Pin  |
+| IO36  | ICS Bus - SDA Pin  |
 
 # Useful Link
 Link to TINDIE store for purchase:  https://www.tindie.com/products/33322/
