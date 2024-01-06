@@ -78,9 +78,10 @@ sensor:
     accuracy_decimals: 0
     update_interval: 5s
     filters:
-      # range for LDR, <0.2V=0% / >3.1V=100%)
+      # range for LDR v1, <0.2V=0% / >3.1V=100%)
+      # range for LDR v2, <0.2V=0% / >2.5V=100%)
       - lambda: |-
-          auto r = map((x * 100), 20, 310, 0, 100);
+          auto r = map((x * 100), 20, 250, 0, 100);
           if (r > 0) return r;
           return 0;
   # Retain last Detection Distance reported --------------
