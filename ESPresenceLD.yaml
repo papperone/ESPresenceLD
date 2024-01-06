@@ -78,10 +78,8 @@ sensor:
     accuracy_decimals: 0
     update_interval: 5s
     filters:
-      # range for LDR v1, <1V=0% / >3.1V=100%)
-      # range for LDR v2, <1V=0% / >2.5V=100%)
       - lambda: |-
-          auto r = map((x * 100), 100, id(ldr_sens).state, 0, 100);
+          auto r = map((x * 100), 19, id(ldr_sens).state, 0, 100);
           if (r > 0) return r;
           return 0;
   # Retain last Detection Distance reported --------------
@@ -301,9 +299,9 @@ number:
     name: "LDR Sensitivity"
     id: ldr_sens
     min_value: 20
-    max_value: 329
+    max_value: 600
     step: 1
-    mode: slider
+    mode: box
     update_interval: never
     optimistic: true
     restore_value: true
