@@ -81,7 +81,7 @@ sensor:
       # range for LDR v1, <0.2V=0% / >3.1V=100%)
       # range for LDR v2, <0.2V=0% / >2.5V=100%)
       - lambda: |-
-          auto r = map((x * 100), 20, 250, 0, 100);
+          auto r = map((x * 100), 20, id(ldr_sens).state, 0, 100);
           if (r > 0) return r;
           return 0;
   # Retain last Detection Distance reported --------------
@@ -296,7 +296,21 @@ number:
         name: "G8 move threshold"
       still_threshold:
         name: "G8 still threshold"
-# setup for 3 zones --> occupancy ending values (distance)
+  # setup threshold for LDR reading
+  - platform: template
+    name: "LDR Sensitivity"
+    id: ldr_sens
+    min_value: 20
+    max_value: 329
+    step: 1
+    mode: slider
+    update_interval: never
+    optimistic: true
+    restore_value: true
+    initial_value: 310
+    icon: "mdi:head-lightbulb"
+    entity_category: CONFIG
+  # setup for 3 zones --> occupancy ending values (distance)
   - platform: template
     name: "Zone 1 End Distance"
     id: presence_z1_end
