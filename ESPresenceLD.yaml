@@ -296,7 +296,7 @@ number:
         name: "G8 still threshold"
   # setup threshold for LDR reading
   - platform: template
-    name: "LDR Sensitivity"
+    name: "LDR Threshold"
     id: ldr_sens
     min_value: 20
     max_value: 600
