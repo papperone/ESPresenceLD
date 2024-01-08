@@ -1,3 +1,5 @@
+![](/images/ESPresenceLD-Logo.jpg)
+
 # ESPresence
 ESPHome firmware for ESPresenceLD sensor (ESP32+LD2410x)
 
