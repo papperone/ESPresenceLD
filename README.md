@@ -8,7 +8,7 @@ Read PDF file in repository --> **ESPresence-LD2410-Install.pdf**
 
 # Factory Reset
 If you want to bring your device to the initial conditions please follow below steps:
-1) download the loader firmware from this repository -- espresenceld.bin
+1) download the loader firmware from this repository -- **espresenceld.bin**
 2) connect your device to PC with USB cable and flash the firmware just downloaded using **ESPHome Flasher** tool
 3) Now the device is in the initial condition and you can install it following the instructions
    
