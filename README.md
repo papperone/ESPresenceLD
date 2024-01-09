@@ -26,8 +26,11 @@ You can purchase this device using the link in the next section.
 | IO36  | ICS Bus - SDA Pin  |
 
 # Useful Link
-Link to TINDIE store for purchase:  https://www.tindie.com/products/33322/
+Link to TINDIE store for purchase
+![https://www.tindie.com/products/33322/](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png)
 
-Link to HACS for custom card (Maurizio Arci):  https://github.com/madmicio/lovelace-ld-2410-control-card
+Link to HACS for custom card (Maurizio Arci)
+https://github.com/madmicio/lovelace-ld-2410-control-card
 
-Link to THINGIVERSE for STL files (Henrik Sozzi):  TBD
+Link to THINGIVERSE for STL files (Henrik Sozzi): 
+**- TBD -**
