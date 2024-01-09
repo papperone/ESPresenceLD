@@ -21,8 +21,8 @@ This firmware is suitable for my ESPresence device based on ESP32-WROOM-32D micr
 You can purchase this device using the link in the next section. 
 | GPIO  | Assigned Function |
 | ------------- | ------------- |
-| IO18  | LD2410C TX Pin  |
-| IO33  | LD2410C RX Pin  |
+| IO18  | LD24x0 TX Pin  |
+| IO33  | LD24x0 RX Pin  |
 | IO13  | Status LED (Green) used by ESPHome  |
 | IO23  | Disable Occupancy LED (Red)  |
 | IO34  | LDR for analog luminosity reading  |
