@@ -4,8 +4,8 @@
 ESPHome firmware for ESPresenceLD sensor (ESP32+LD2410x)
 
 # Prerequisites
-It is reccomended to have ESPHome installed on an hardware with minimum 2Gb of RAM (4Gb is advisable) otherwise it may not be able to compile correctly the firmware.
-Having Bluetooth enabled on your Home Assistant will make a smoother setup experience of the device with autodiscover, adopt and compile of newest firmware available.
+Installing **ESPHome** on hardware with a minimum of 2GB of RAM (4GB is recommended) is crucial, otherwise it may not be able to compile the firmware properly.
+The setup process of your **Home Assistant** can be smoother with *Bluetooth* enabled, as it autodiscovers, adopts, and compiles the latest firmware available.
 
 # Installation
 Read PDF file in repository --> **ESPresence-LD2410-Install.pdf**
