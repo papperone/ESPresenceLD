@@ -26,8 +26,8 @@ You can purchase this device using the link in the next section.
 | IO13  | Status LED (Green) used by ESPHome  |
 | IO23  | Disable Occupancy LED (Red)  |
 | IO34  | LDR for analog luminosity reading  |
-| IO25  | ICS Bus - SCL Pin  |
-| IO26  | ICS Bus - SDA Pin  |
+| IO25  | ICS Bus - SCL or SDA Pin  |
+| IO26  | ICS Bus - SDA or SCL Pin  |
 
 NOTE: in **I2C_device folder** you can find example code for tested I2C sensor; you can simply copy and paste them at the end of the YAML code of your ESPresenceLD device and recompile the firmware.
 
