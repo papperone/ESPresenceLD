@@ -1,0 +1,12 @@
+i2c:
+  sda: 25
+  scl: 26
+  scan: true
+
+sensor:
+  - platform: hdc1080
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"
+    update_interval: 60s
