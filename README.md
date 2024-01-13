@@ -29,6 +29,8 @@ You can purchase this device using the link in the next section.
 | IO25  | ICS Bus - SCL Pin  |
 | IO26  | ICS Bus - SDA Pin  |
 
+NOTE: in **I2C_device folder** you can find example code for tested I2C sensor; you can simply copy and paste them at the end of the YAML code of your ESPresenceLD device and recompile the firmware.
+
 # Useful Link
 Link to TINDIE store for purchase: https://www.tindie.com/products/33322/
 ![](https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-smalls.png)
