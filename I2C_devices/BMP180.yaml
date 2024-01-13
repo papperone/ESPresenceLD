@@ -1,0 +1,12 @@
+i2c:
+  sda: 26
+  scl: 25
+  scan: true
+
+sensor:
+  - platform: bmp085
+    temperature:
+      name: "Temperature"
+    pressure:
+      name: "Pressure"
+    update_interval: 60s
