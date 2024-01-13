@@ -1,0 +1,16 @@
+i2c:
+  sda: 26
+  scl: 25
+  scan: true
+
+sensor:
+  - platform: bme280
+    temperature:
+      name: "Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Pressure"
+    humidity:
+      name: "Humidity"
+    address: 0x77
+    update_interval: 60s
