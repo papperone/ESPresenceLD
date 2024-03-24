@@ -112,85 +112,49 @@ sensor:
       id: presence_det_dist
     g0:
       move_energy:
-        id: g0move 
         name: "G0 move energy"
-        internal: true
       still_energy:
-        id: g0still
         name: "G0 still energy"
-        internal: true
     g1:
       move_energy:
-        id: g1move
         name: "G1 move energy"
-        internal: true
       still_energy:
-        id: g1still
         name: "G1 still energy"
-        internal: true
     g2:
       move_energy:
-        id: g2move 
         name: "G2 move energy"
-        internal: true
       still_energy:
-        id: g2still 
         name: "G2 still energy"
-        internal: true
     g3:
       move_energy:
-        id: g3move 
         name: "G3 move energy"
-        internal: true
       still_energy:
-        id: g3still
         name: "G3 still energy"
-        internal: true
     g4:
       move_energy:
-        id: g4move 
         name: "G4 move energy"
-        internal: true
       still_energy:
-        id: g4still
         name: "G4 still energy"
-        internal: true
     g5:
       move_energy:
-        id: g5move 
         name: "G5 move energy"
-        internal: true
       still_energy:
-        id: g5still
         name: "G5 still energy"
-        internal: true
     g6:
       move_energy:
-        id: g6move 
         name: "G6 move energy"
-        internal: true
       still_energy:
-        id: g6still
         name: "G6 still energy"
-        internal: true
     g7:
       move_energy:
-        id: g7move 
         name: "G7 move energy"
-        internal: true
       still_energy:
-        id: g7still
         name: "G7 still energy"
-        internal: true
     g8:
       move_energy:
-        id: g8move 
         name: "G8 move energy"
-        internal: true
       still_energy:
-        id: g8still
         name: "G8 still energy"
-        internal: true
 
 binary_sensor:
   - platform: ld2410
@@ -398,25 +362,6 @@ text_sensor:
       name: "Mac address"
       entity_category: diagnostic
       disabled_by_default: $disable_entities
-  - platform: template
-    name: "array sensor data"
-    lambda: |-
-        if (id(engineering_mode).state) {
-           return "["
-                + std::to_string(int(id(g0move).state)) + "," + std::to_string(int(id(g0still).state)) + ","
-                + std::to_string(int(id(g1move).state)) + "," + std::to_string(int(id(g1still).state)) + ","
-                + std::to_string(int(id(g2move).state)) + "," + std::to_string(int(id(g2still).state)) + ","
-                + std::to_string(int(id(g3move).state)) + "," + std::to_string(int(id(g3still).state)) + ","
-                + std::to_string(int(id(g4move).state)) + "," + std::to_string(int(id(g4still).state)) + ","
-                + std::to_string(int(id(g5move).state)) + "," + std::to_string(int(id(g5still).state)) + ","
-                + std::to_string(int(id(g6move).state)) + "," + std::to_string(int(id(g6still).state)) + ","
-                + std::to_string(int(id(g7move).state)) + "," + std::to_string(int(id(g7still).state)) + ","
-                + std::to_string(int(id(g8move).state)) + "," + std::to_string(int(id(g8still).state))
-                + "]";
-        } else {
-          return std::string("engineering mode off");
-        }
-    update_interval: 1s
 
 select:
   - platform: ld2410
