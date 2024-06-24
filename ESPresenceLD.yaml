@@ -42,6 +42,7 @@ api:
             id: ld2410_device
             password: !lambda 'return password;'
 ota:
+  platform: esphome
 #  on_error:
 #    then:
 #      - button.press: restart_button
